@@ -18,6 +18,7 @@
  * }
  * @returns {array}
  */
+console.log(123)
 // 对象方式传参方便后面维护和扩展
 const ruleVerify = (obj) => {
   var isRequired = obj.isRequired || false
