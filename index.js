@@ -21,21 +21,21 @@
  */
 // 对象方式传参方便后面维护和扩展
 const ruleVerify = (obj) => {
-  var isRequired = obj.isRequired || false // 默认不必填
-  var tipType = obj.tipType || 0 // 默认请输入
-  var tipText = obj.tipText
-  var failText = obj.failText
-  var tigMethod = obj.tigMethod || 0 // 默认失焦校验
-  var pattern = obj.pattern // 正则表达式
-  var regKey = obj.regKey
-  var numInterval = obj.numInterval
-  var dateInterval = obj.dateInterval
-  var compare = obj.compare
-  var special = obj.special
-  var rules = []
-  var tipTypes = ['请输入', '请选择', '请上传']
-  var tigMethods = ['blur', 'change', ['blur', 'change']]
-  var regs = {
+  const isRequired = obj.isRequired || false // 默认不必填
+  const tipType = obj.tipType || 0 // 默认请输入
+  const tipText = obj.tipText
+  const failText = obj.failText
+  const tigMethod = obj.tigMethod || 0 // 默认失焦校验
+  const pattern = obj.pattern // 正则表达式
+  const regKey = obj.regKey
+  const numInterval = obj.numInterval
+  const dateInterval = obj.dateInterval
+  const compare = obj.compare
+  const special = obj.special
+  const rules = []
+  const tipTypes = ['请输入', '请选择', '请上传']
+  const tigMethods = ['blur', 'change', ['blur', 'change']]
+  const regs = {
     idNumber: { // 身份正则
       // reg: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
       reg: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/
@@ -103,7 +103,7 @@ const ruleVerify = (obj) => {
   }
   // 比较校验
   const checkCompare = (rule, value, callback) => {
-    var targetVal = compare.targetVal; var compareType = compare.compareType
+    const targetVal = compare.targetVal; const compareType = compare.compareType
     const obj = {
       0: value < targetVal,
       1: value === targetVal,
@@ -121,7 +121,7 @@ const ruleVerify = (obj) => {
   // 特殊类校验
   const checkSpecial = {
     key1: (rule, value, callback) => {
-      var maxNum
+      let maxNum
       if (special.settleCycle === '0') { // 日结(多少个工作日)
         maxNum = 999
       } else if (special.settleCycle === '1') { // 周结(每周周几)
@@ -136,7 +136,7 @@ const ruleVerify = (obj) => {
       }
     }
   }
-  var verifyTypes = {
+  const verifyTypes = {
     isRequired: [isRequired, checkEmpty],
     regKey: [regKey, checkReg],
     pattern: [pattern, checkPattern],
